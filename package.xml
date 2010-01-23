@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>opAuthSimpleLoginTestPlugin</name>
+ <channel>plugins.openpne.jp</channel>
+ <summary>opAuthSimpleLoginTestPlugin</summary>
+ <description>opAuthSimpleLoginTestPlugin</description>
+ <lead>
+  <name>Shinichi Urabe</name>
+  <user>urabe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2010-01-24</date>
+ <time>07:35:05</time>
+ <version>
+  <release>0.0.1</release>
+  <api>0.0.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>Apache</license>
+ <notes>first release</notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="c83ebca209029a8d9ef3fa84864c1e2e" name="config/auth.yml" role="data" />
+   <file baseinstalldir="/" md5sum="0ee9ff953906c8263a33ebfb902627c2" name="lib/form/opAuthLoginFormSimpleLoginTest.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f17ce0a9392c96415115898045d93029" name="lib/user/opAuthAdapterSimpleLoginTest.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="96b0b76377ee295bbce4bcd6cc6f137c" name="lib/validator/opAuthValidatorMemberId.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
+   <file baseinstalldir="/" md5sum="2b650626983a90ce1f140976dd7556ee" name="README.rst" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>1.2.0</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-24</date>
+   <license>Apache</license>
+   <notes>first release</notes>
+  </release>
+ </changelog>
+</package>
