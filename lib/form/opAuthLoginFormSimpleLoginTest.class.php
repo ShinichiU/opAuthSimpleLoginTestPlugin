@@ -21,7 +21,7 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
 
   public function configure()
   {
-    $this->getMembers();
+    $this->getMembers($this->getOption('max', false));
 
     $this->setWidget('member_id', new sfWidgetFormSelect(array('choices' => $this->members), array('add_empty' => false)));
     $this->validatorSchema['member_id'] = new sfValidatorChoice(array('choices' => array_keys($this->members)));

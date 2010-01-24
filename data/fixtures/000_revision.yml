@@ -1,0 +1,4 @@
+SnsConfig:
+  op_auth_simple_login_test_plugin_current_revision:
+    name: "opAuthSimpleLoginTestPlugin_revision"
+    value: 1

@@ -1,0 +1,5 @@
+Gadget:
+  auth_simple_form:
+    type: "sideBannerContents"
+    name: "authMemberList"
+    sort_order: 30

@@ -1,0 +1,185 @@
+From 301796f7aa5bb81e4e6205beeaca3ad7fe513c07 Mon Sep 17 00:00:00 2001
+From: ShinichiU <urabe@nuts-choco.com>
+Date: Sun, 24 Jan 2010 14:52:08 +0900
+Subject: [PATCH] Add member change box
+
+---
+ .../modules/simpleLogin/actions/actions.class.php  |   30 ++++++++++++++++++++
+ .../simpleLogin/actions/components.class.php       |   25 ++++++++++++++++
+ .../modules/simpleLogin/templates/_form.php        |    8 +++++
+ config/side_banner_gadget.yml                      |   20 +++++++++++++
+ data/fixtures/000_revision.yml                     |    4 ++
+ data/fixtures/020_gadget.yml                       |    5 +++
+ .../001_add_simple_login_gadget_to_side_banner.php |   12 ++++++++
+ lib/form/opAuthLoginFormSimpleLoginTest.class.php  |    2 +-
+ 8 files changed, 105 insertions(+), 1 deletions(-)
+ create mode 100644 apps/pc_frontend/modules/simpleLogin/actions/actions.class.php
+ create mode 100644 apps/pc_frontend/modules/simpleLogin/actions/components.class.php
+ create mode 100644 apps/pc_frontend/modules/simpleLogin/templates/_form.php
+ create mode 100644 config/side_banner_gadget.yml
+ create mode 100644 data/fixtures/000_revision.yml
+ create mode 100644 data/fixtures/020_gadget.yml
+ create mode 100644 data/migrations/0.0.2/001_add_simple_login_gadget_to_side_banner.php
+
+diff --git a/apps/pc_frontend/modules/simpleLogin/actions/actions.class.php b/apps/pc_frontend/modules/simpleLogin/actions/actions.class.php
+new file mode 100644
+index 0000000..d24359a
+--- /dev/null
++++ b/apps/pc_frontend/modules/simpleLogin/actions/actions.class.php
+@@ -0,0 +1,30 @@
++<?php
++
++/**
++ * This file is part of the OpenPNE package.
++ * (c) OpenPNE Project (http://www.openpne.jp/)
++ *
++ * For the full copyright and license information, please view the LICENSE
++ * file and the NOTICE file that were distributed with this source code.
++ */
++
++/**
++ * simpleLogin actions.
++ *
++ * @package    OpenPNE
++ * @subpackage simpleLogin
++ * @author     Your name here
++ * @version    SVN: $Id: actions.class.php 9301 2008-05-27 01:08:46Z dwhittle $
++ */
++class simpleLoginActions extends sfActions
++{
++ /**
++  * Executes index action
++  *
++  * @param sfWebRequest $request A request object
++  */
++  public function executeIndex(sfWebRequest $request)
++  {
++    $this->forward('default', 'module');
++  }
++}
+diff --git a/apps/pc_frontend/modules/simpleLogin/actions/components.class.php b/apps/pc_frontend/modules/simpleLogin/actions/components.class.php
+new file mode 100644
+index 0000000..3b65ad5
+--- /dev/null
++++ b/apps/pc_frontend/modules/simpleLogin/actions/components.class.php
+@@ -0,0 +1,25 @@
++<?php
++
++/**
++ * This file is part of the OpenPNE package.
++ * (c) OpenPNE Project (http://www.openpne.jp/)
++ *
++ * For the full copyright and license information, please view the LICENSE
++ * file and the NOTICE file that were distributed with this source code.
++ */
++
++/**
++ * simpleLogin components.
++ *
++ * @package    OpenPNE
++ * @subpackage diary
++ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
++ */
++class simpleLoginComponents extends sfComponents
++{
++  public function executeForm()
++  {
++    $adapter = new opAuthAdapterSimpleLoginTest('simpleLoginTest');
++    $this->form = $adapter->getAuthForm();
++  }
++}
+diff --git a/apps/pc_frontend/modules/simpleLogin/templates/_form.php b/apps/pc_frontend/modules/simpleLogin/templates/_form.php
+new file mode 100644
+index 0000000..50f853a
+--- /dev/null
++++ b/apps/pc_frontend/modules/simpleLogin/templates/_form.php
+@@ -0,0 +1,8 @@
++<? $form->getWidget('member_id')->setAttribute('onchange', 'submit(this.form)'); ?>
++<div id="sidemenuLogin" class="loginForm">
++<form action="<?php echo url_for('member/login') ?>" method="post">
++<table>
++<?php echo $form ?>
++</table>
++</form>
++</div>
+diff --git a/config/side_banner_gadget.yml b/config/side_banner_gadget.yml
+new file mode 100644
+index 0000000..3e8a59d
+--- /dev/null
++++ b/config/side_banner_gadget.yml
+@@ -0,0 +1,20 @@
++authMemberList:
++  caption:
++    ja_JP: "ログイン切り替えフォーム"
++  description:
++    ja_JP: "簡単にログインの切り替えが可能となります。"
++  component: [simpleLogin, form]
++  config:
++    max:
++      Name:      "max"
++      Caption:   "ログインメンバー最大表示件数"
++      FormType:  "select"
++      ValueType:  "int"
++      IsRequired: true
++      Default:    300
++      Choices:
++        1: 10
++        3: 50
++        5: 100
++        7: 300
++        10: 500
+diff --git a/data/fixtures/000_revision.yml b/data/fixtures/000_revision.yml
+new file mode 100644
+index 0000000..3d5c751
+--- /dev/null
++++ b/data/fixtures/000_revision.yml
+@@ -0,0 +1,4 @@
++SnsConfig:
++  op_auth_simple_login_test_plugin_current_revision:
++    name: "opAuthSimpleLoginTestPlugin_revision"
++    value: 1
+diff --git a/data/fixtures/020_gadget.yml b/data/fixtures/020_gadget.yml
+new file mode 100644
+index 0000000..3d5807f
+--- /dev/null
++++ b/data/fixtures/020_gadget.yml
+@@ -0,0 +1,5 @@
++Gadget:
++  auth_simple_form:
++    type: "sideBannerContents"
++    name: "authMemberList"
++    sort_order: 30
+diff --git a/data/migrations/0.0.2/001_add_simple_login_gadget_to_side_banner.php b/data/migrations/0.0.2/001_add_simple_login_gadget_to_side_banner.php
+new file mode 100644
+index 0000000..80a1345
+--- /dev/null
++++ b/data/migrations/0.0.2/001_add_simple_login_gadget_to_side_banner.php
+@@ -0,0 +1,12 @@
++<?php
++
++class Revision15_addSimpleLoginGadgetToSideBanner extends Doctrine_Migration_Base
++{
++  public function migrate()
++  {
++    $gadget = new Gadget();
++    $gadget->setType('sideBannerContents');
++    $gadget->setName('authMemberList');
++    $gadget->save();
++  }
++}
+diff --git a/lib/form/opAuthLoginFormSimpleLoginTest.class.php b/lib/form/opAuthLoginFormSimpleLoginTest.class.php
+index 63d849b..296886e 100644
+--- a/lib/form/opAuthLoginFormSimpleLoginTest.class.php
++++ b/lib/form/opAuthLoginFormSimpleLoginTest.class.php
+@@ -21,7 +21,7 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
+ 
+   public function configure()
+   {
+-    $this->getMembers();
++    $this->getMembers($this->getOption('max', false));
+ 
+     $this->setWidget('member_id', new sfWidgetFormSelect(array('choices' => $this->members), array('add_empty' => false)));
+     $this->validatorSchema['member_id'] = new sfValidatorChoice(array('choices' => array_keys($this->members)));
+-- 
+1.5.6.5
+

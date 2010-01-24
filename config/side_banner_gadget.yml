@@ -1,0 +1,20 @@
+authMemberList:
+  caption:
+    ja_JP: "ログイン切り替えフォーム"
+  description:
+    ja_JP: "簡単にログインの切り替えが可能となります。"
+  component: [simpleLogin, form]
+  config:
+    max:
+      Name:      "max"
+      Caption:   "ログインメンバー最大表示件数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    300
+      Choices:
+        1: 10
+        3: 50
+        5: 100
+        7: 300
+        10: 500
