@@ -18,6 +18,7 @@
 class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
 {
   protected $members = array(null => '選択してください');
+  public static $ids;
 
   public function configure()
   {
@@ -37,6 +38,11 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
       ->createQuery()
       ->select('id')
       ->addSelect('name');
+
+    if (self::$ids)
+    {
+      $q->whereIn('id', self::$ids);
+    }
 
     if ($limit)
     {
