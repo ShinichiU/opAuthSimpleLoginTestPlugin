@@ -19,7 +19,8 @@ class simpleLoginComponents extends sfComponents
 {
   public function executeForm()
   {
-    $adapter = new opAuthAdapterSimpleLoginTest('simpleLoginTest');
+    $adapter = new opAuthAdapterSimpleLoginTest('SimpleLoginTest');
     $this->form = $adapter->getAuthForm();
+    $this->form->setDefault('member_id', $this->getUser()->getMemberId());
   }
 }

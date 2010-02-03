@@ -17,13 +17,13 @@
  */
 class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
 {
-  protected $members = array();
+  protected $members = array(null => '選択してください');
 
   public function configure()
   {
     $this->getMembers($this->getOption('max', false));
 
-    $this->setWidget('member_id', new sfWidgetFormSelect(array('choices' => $this->members), array('add_empty' => false)));
+    $this->setWidget('member_id', new sfWidgetFormSelect(array('choices' => $this->members)));
     $this->validatorSchema['member_id'] = new sfValidatorChoice(array('choices' => array_keys($this->members)));
     $this->mergePostValidator(
       new opAuthValidatorMemberId(array('field_name' => 'member_id'))
