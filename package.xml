@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>opAuthSimpleLoginTestPlugin</name>
- <channel>plugins.openpne.jp</channel>
- <summary>opAuthSimpleLoginTestPlugin</summary>
- <description>opAuthSimpleLoginTestPlugin</description>
+ <channel>plugins.ebihara.dazai.pne.jp</channel>
+ <summary>テスト用プラグイン</summary>
+ <description>簡単にログインするためのプラグインです。テスト、動作検証用</description>
  <lead>
-  <name>Shinichi Urabe</name>
-  <user>urabe</user>
+  <name />
+  <user>urabe@tejimaya.com</user>
   <email />
   <active>yes</active>
  </lead>
- <date>2010-01-24</date>
- <time>07:35:05</time>
+ <date>2010-03-14</date>
+ <time>11:27:08</time>
  <version>
-  <release>0.0.1</release>
-  <api>0.0.1</api>
+  <release>0.0.2</release>
+  <api>0.0.2</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license>Apache</license>
- <notes>first release</notes>
+ <notes>
+release 0.0.2 beta
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="a2f874b4d6689c59b732e308ee6a950a" name="apps/pc_frontend/modules/simpleLogin/actions/actions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5b89f87bc3d40a39736ac8efaae9fa2a" name="apps/pc_frontend/modules/simpleLogin/actions/components.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="6597636bf4c3dc9d8a175022e0fb045a" name="apps/pc_frontend/modules/simpleLogin/templates/_form.php" role="data" />
    <file baseinstalldir="/" md5sum="c83ebca209029a8d9ef3fa84864c1e2e" name="config/auth.yml" role="data" />
-   <file baseinstalldir="/" md5sum="0ee9ff953906c8263a33ebfb902627c2" name="lib/form/opAuthLoginFormSimpleLoginTest.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="d9ab970a1974ce879ad8da204cf6841f" name="config/side_banner_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="69c63d4ea9785c210ffad470f7a64032" name="data/fixtures/000_revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="99e4c37441ec2868b1e5e72fa035f762" name="data/fixtures/020_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="8f84d19bab443d1e87f36c01cd772458" name="data/migrations/0.0.2/001_add_simple_login_gadget_to_side_banner.php" role="data" />
+   <file baseinstalldir="/" md5sum="a25fe2be48891117a011f6b4a690e625" name="lib/form/opAuthLoginFormSimpleLoginTest.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="aea8d4c162b203f76dcc7d3ebe639742" name="lib/form/SimpleLoginMemberSearchForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f17ce0a9392c96415115898045d93029" name="lib/user/opAuthAdapterSimpleLoginTest.class.php" role="data" />
    <file baseinstalldir="/" md5sum="96b0b76377ee295bbce4bcd6cc6f137c" name="lib/validator/opAuthValidatorMemberId.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
@@ -63,7 +73,24 @@
    </stability>
    <date>2010-01-24</date>
    <license>Apache</license>
-   <notes>first release</notes>
+   <notes>
+first release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-03-14</date>
+   <license>Apache</license>
+   <notes>
+release 0.0.2 beta
+   </notes>
   </release>
  </changelog>
 </package>
