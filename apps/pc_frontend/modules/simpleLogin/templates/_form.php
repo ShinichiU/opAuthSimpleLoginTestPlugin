@@ -1,12 +1,11 @@
-<?
-$form->getWidget('member_id')->setAttribute('onchange', 'submit(this.form); return false;');
-$searchForm->getWidget('id_min')->setAttribute('style', 'width: 50px;');
-$searchForm->getWidget('id_max')->setAttribute('style', 'width: 50px;');
-?>
 <div id="sidemenuLogin" class="loginForm">
-<form action="<?php echo url_for('member/login?authMode=SimpleLoginTest') ?>" method="post">
+<?php echo $form->renderFormTag(url_for('member/login?authMode=SimpleLoginTest')) ?>
 <table>
-<?php echo $form ?>
+<tr><td>
+<?php echo $form['member_id']->renderLabel() ?>:
+<?php echo $form['member_id']->render(array('onchange' => 'submit(this.form)')) ?>
+<?php echo $form->renderHiddenFields() ?>
+</td></tr>
 </table>
 </form>
 <form action="." method="get">
