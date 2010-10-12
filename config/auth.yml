@@ -1,8 +1,20 @@
-invite_mode:
-  Default: 1
-
 enable_mobile:
+  IsConfig:   false
   Default: 1
 
 enable_pc:
+  IsConfig:   false
   Default: 1
+
+invite_mode:
+  IsConfig:   false
+  Default: 0
+
+member_list_limit_for_simple_test:
+  Name:      "member_list_limit_for_simple_test"
+  Caption:   "プルダウンに表示するメンバーの最大値"
+  FormType:  "input"
+  ValueType: "int"
+  IsConfig:   true
+  IsRequired: true
+  Default:    300

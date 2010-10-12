@@ -22,7 +22,7 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
 
   public function configure()
   {
-    $this->getMembers($this->getOption('max', false));
+    $this->getMembers();
 
     $this->setWidget('member_id', new sfWidgetFormSelect(array('choices' => $this->members)));
     $this->validatorSchema['member_id'] = new sfValidatorChoice(array('choices' => array_keys($this->members)));
@@ -32,7 +32,7 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
     parent::configure();
   }
 
-  protected function getMembers($limit = false)
+  protected function getMembers()
   {
     $q = Doctrine::getTable('Member')
       ->createQuery()
@@ -44,7 +44,7 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
       $q->whereIn('id', self::$ids);
     }
 
-    if ($limit)
+    if ($limit = $this->getAuthAdapter()->getAuthConfig('member_list_limit_for_simple_test'))
     {
       $q->limit((int)$limit);
     }

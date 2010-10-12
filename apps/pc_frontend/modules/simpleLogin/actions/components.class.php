@@ -12,8 +12,8 @@
  * simpleLogin components.
  *
  * @package    OpenPNE
- * @subpackage diary
- * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ * @subpackage opAuthSimpleLoginTestPlugin
+ * @author     Shinichi Urabe <urabe@tejimaya.com>
  */
 class simpleLoginComponents extends sfComponents
 {
