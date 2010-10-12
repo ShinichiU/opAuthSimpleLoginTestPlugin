@@ -10,7 +10,14 @@
 </form>
 <form action="." method="get">
 <table>
-<?php echo $searchForm ?>
+<tr>
+<td>
+ID Max: <?php echo $searchForm['id_max']->render(array('size' => 3)) ?>
+</td>
+<td>
+ID Min: <?php echo $searchForm['id_min']->render(array('size' => 3)) ?>
+</td>
+</tr>
 <tr>
 <td colspan="2">
 <input type="submit" class="input_submit" value="<?php echo __('Send') ?>" />
