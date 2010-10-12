@@ -48,11 +48,11 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
     {
       $q->limit((int)$limit);
     }
-    $results = $q->execute(array(), Doctrine::HYDRATE_ARRAY);
+    $results = $q->execute(array(), Doctrine::HYDRATE_NONE);
 
     foreach ($results as $result)
     {
-      $this->members[$result['id']] = $result['name'].'(id:'.$result['id'].')';
+      $this->members[$result[0]] = $result[1].'(id:'.$result[0].')';
     }
   }
 }
