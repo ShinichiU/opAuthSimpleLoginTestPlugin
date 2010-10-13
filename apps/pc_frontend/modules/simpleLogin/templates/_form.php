@@ -8,7 +8,7 @@
 </td></tr>
 </table>
 </form>
-<form action="." method="get">
+<form action="<?php echo $sf_context->getRequest()->getUri() ?>" method="get">
 <table>
 <tr>
 <td>
