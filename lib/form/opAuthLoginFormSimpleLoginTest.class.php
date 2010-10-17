@@ -18,7 +18,9 @@
 class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
 {
   protected $members = array(null => '選択してください');
-  public static $ids;
+  public static
+    $max,
+    $min;
 
   public function configure()
   {
@@ -37,11 +39,16 @@ class opAuthLoginFormSimpleLoginTest extends opAuthLoginForm
     $q = Doctrine::getTable('Member')
       ->createQuery()
       ->select('id')
-      ->addSelect('name');
+      ->addSelect('name')
+      ->where(1);
 
-    if (self::$ids)
+    if (self::$max)
     {
-      $q->whereIn('id', self::$ids);
+      $q->andWhere('id <= ?', (int)self::$max);
+    }
+    if (self::$min)
+    {
+      $q->andWhere('id >= ?', (int)self::$min);
     }
 
     if ($limit = $this->getAuthAdapter()->getAuthConfig('member_list_limit_for_simple_test'))

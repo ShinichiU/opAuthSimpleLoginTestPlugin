@@ -35,29 +35,7 @@ class SimpleLoginMemberSearchForm extends BaseForm
 
   public function setIdsToAuthForm()
   {
-    $q = Doctrine::getTable('Member')->createQuery();
-    $q->select('id')->where(1);
-    $id_min = $this->getValue('id_min');
-    $id_max = $this->getValue('id_max');
-
-    if ($id_min || $id_max)
-    {
-      if ($id_min)
-      {
-        $q->andWhere('id >= ?', (int)$id_min);
-      }
-      if ($id_max)
-      {
-        $q->andWhere('id <= ?', (int)$id_max);
-      }
-
-      $ids = $q->execute(array(), Doctrine::HYDRATE_NONE);
-      foreach ($ids as &$result)
-      {
-        $result = $result[0];
-      }
-
-      opAuthLoginFormSimpleLoginTest::$ids = count($ids) ? $ids : null;
-    }
+    opAuthLoginFormSimpleLoginTest::$max = $this->getValue('id_max');
+    opAuthLoginFormSimpleLoginTest::$min = $this->getValue('id_min');
   }
 }
